@@ -21,15 +21,62 @@ CONSTRAINT wer FOREIGN KEY(Ident_code)
 REFERENCES Out_Hospital_Patients(Ident_code)
 );
 
+alter table Appointments
+modify Appointment_date varchar2 (1000)
 
+
+Update Appointments
+SET Appointment_time = '11:00'
+where Out_Patient_name = 'Robinson, Mae A.'
 
 INSERT INTO Appointments
 (Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
 VALUES(3495678590230, 'Catters, Katherine E.', 'Robinson, Mae A.', 23456789087654, 'Cardiac Surgery', 'Tuesday', '11:00-14:00', '23-янв-2017')
 
+INSERT INTO Appointments
+(Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
+VALUES(3495678590230, 'Catters, Katherine E.', 'Burgess, Emmet', 34576898765434, 'Cardiac Surgery', 'Thursday', '11:30', '25-янв-2017')
+
+INSERT INTO Appointments
+(Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
+VALUES(5695678590230, 'Specter, Olive H.', 'Burgess, Emmet', 34576898765434, 'Traumatology', 'Monday', '13:30', '22-янв-2017')
+
+INSERT INTO Appointments
+(Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
+VALUES(5695678590230, 'Specter, Olive H.', 'Risus, Eternity E.', 234567887654, 'Traumatology', 'Minday', '15:30', '22-янв-2017')
+
+VALUES(234567887654, 'Risus, Eternity E.', '24-апр-2001', 456789987, 54, 'Likely',
+26, 0, 5695678590230)
+
+VALUES('Specter, Olive H.', 5695678590230, '13-окт-1986', 4356457756, 54, 'Superno',
+149, 0, 110, 203, 2300)
+
+INSERT INTO Appointments
+(Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
+VALUES(3495678590230, 'Catters, Katherine E.', 'Catters, Neil A.D.J.', 095859404580, 'Cardiac Surgery', 'Tuesday', '12:00', '23-янв-2017')
+
+INSERT INTO Appointments
+(Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
+VALUES(3495678590230, 'Catters, Katherine E.', 'Risus, Eternity E.', 234567887654, 'Cardiac Surgery', 'Thursday', '12:00', '25-янв-2017')
+
+INSERT INTO Appointments
+(Employee_id, Employee_name, Out_Patient_name, Ident_code, Department_name, Appointment_day, Appointment_time, Appointment_date)
+VALUES(23456789009876, 'Gallivan, Viktoria', 'Catters, Neil A.D.J.', 095859404580, 'Reanimation', 'Wednesday', '10:00', '24-янв-2017')
+
+
+
+VALUES('Gallivan, Viktoria', 23456789009876, '24-окт-1981', 87654321234, 56, 'Elphenost',
+678, 0, 107, 201, 3225)
+
+VALUES(095859404580, 'Catters, Neil A.D.J.', '18-сен-2000', 0686055993, 54, 'Superno',
+137, 0, 3495678590230)
+
+
+UPDATE Appointments
+set Appointment_day = 'Monday'
+where Ident_Code = 234567887654
 
 select * from Appointments
-
 
 
 
@@ -66,6 +113,18 @@ INSERT INTO Out_Hospital_Patients
 Ad_house, Ad_flat, Employee_id)
 VALUES(23456789087654, 'Robinson, Mae A.', '5-дек-2000', 0685593993, 56, 'Fidele',
 17, 0, 3495678590230)
+
+INSERT INTO Out_Hospital_Patients
+(Ident_code, Out_Patient_name, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Employee_id)
+VALUES(34576898765434, 'Burgess, Emmet', '6-окт-2000', 067608978, 54, 'Likely',
+17, 0, 3495678590230)
+
+INSERT INTO Out_Hospital_Patients
+(Ident_code, Out_Patient_name, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Employee_id)
+VALUES(234567887654, 'Risus, Eternity E.', '24-апр-2001', 456789987, 54, 'Likely',
+26, 0, 5695678590230)
 
 delete from Out_Hospital_Patients
 where Phone_num =0685593993
@@ -108,6 +167,13 @@ modify End_of_reception varchar2 (1000);*/
 INSERT INTO Timetable
 (Employee_name, Department_name, Job_name, Phone_num, Reception_days, Reception_time)
 VALUES('Catters, Katherine E.', 'Cardiac Surgery', 'Surgeon', 4356457657, 'Tuesday, Thursday', '11:00-14:00')
+
+VALUES('Specter, Olive H.', 5695678590230, '13-окт-1986', 4356457756, 54, 'Superno',
+149, 0, 110, 203, 2300)
+
+INSERT INTO Timetable
+(Employee_name, Department_name, Job_name, Phone_num, Reception_days, Reception_time)
+VALUES('Specter, Olive H.', 'Traumatology', 'Doctor', 4356457756, 'Monday, Friday', '13:00-16:00')
 
 /*INSERT INTO Timetable
 (Employee_name, Department_name, Job_name, Phone_num, Reception_day, Reception_time)
@@ -167,6 +233,44 @@ Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_da
 VALUES('Grace, Virginia', 7689049385949, '7-янв-2001', 4356457657, 54, 'Lackenrid',
 456, 0, 107, 35,1, 23456789009876, '21-дек-2016', '19-мар-2017')
 
+INSERT INTO In_Hospital_Patients
+(Patient_name, Ident_code, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_date, Finish_date)
+VALUES('Hers, Sydney', 23456789876545, '23-мар-2001', 9874567896, 53, 'Backert',
+46, 0, 102, 32, 1, 23456789009876, '19-мар-2017', '3-май-2017')
+
+INSERT INTO In_Hospital_Patients
+(Patient_name, Ident_code, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_date, Finish_date)
+VALUES('Richards, Tiffany', 5678765433456, '9-май-2001', 3456534587, 54, 'Lowstone',
+198, 0, 102, 32, 1, 5695678590230, '20-мар-2017', '3-май-2017')
+
+INSERT INTO In_Hospital_Patients
+(Patient_name, Ident_code, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_date, Finish_date)
+VALUES('Maicon, Jonas', 7654567898765, '31-дек-2000', 3465434565, 54, 'Lowstone',
+45, 0, 102, 32, 1, 5695678590230, '21-мар-2017', '3-май-2017')
+
+INSERT INTO In_Hospital_Patients
+(Patient_name, Ident_code, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_date, Finish_date)
+VALUES('Johnas, Dug', 76545665434565, '5-сен-1995', 9846654334, 53, 'Maroons',
+23, 0, 104, 33, 2, 3495678590230, '27-фев-2017', '16-мар-2017')
+
+INSERT INTO In_Hospital_Patients
+(Patient_name, Ident_code, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_date, Finish_date)
+VALUES('Manson, Cordelia', 09876543456, '6-авг-1979', 57866787, 55, 'Golden-Gate',
+165, 0, 104, 33, 2, 3495678590230, '17-фев-2017', '4-мар-2017')
+
+INSERT INTO In_Hospital_Patients
+(Patient_name, Ident_code, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Ailment_id, Category_id, Employee_id, Start_date, Finish_date)
+VALUES('Cadman, Ali', 345676543345, '18-янв-1980', 876534564, 55, 'Ags-Alley',
+131, 0, 104, 33, 1, 3495678590230, '21-фев-2017', '7-мар-2017')
+
+102 Neurology
+104 Gastroenterology
 
 Select *
 from In_Hospital_Patients
@@ -188,6 +292,13 @@ REFERENCES Hexinger_Departments(Department_id),
 CONSTRAINT fher FOREIGN KEY(Employee_id)
 REFERENCES Hexinger_Employees(Employee_id)
 );
+
+VALUES('Specter, Olive H.', 5695678590230, '13-окт-1986', 4356457756, 54, 'Superno',
+149, 0, 110, 203, 2300)
+
+INSERT INTO Employee_Job_History
+(Employee_id, Start_job_date, Finish_job_date, Job_id, Department_id)
+VALUES(5695678590230, '7-май-1999', '1-янв-1970', 203, 110)
 
 
 INSERT INTO Employee_Job_History
@@ -266,6 +377,14 @@ constraint job_un unique(Job_name)
 INSERT INTO Hospital_Jobs
 (Job_id, Job_name, Min_salary, Max_salary)
 VALUES(201, 'Surgeon', 1250, 4500)
+
+INSERT INTO Hospital_Jobs
+(Job_id, Job_name, Min_salary, Max_salary)
+VALUES(202, 'Nurse', 1000, 2100)
+
+INSERT INTO Hospital_Jobs
+(Job_id, Job_name, Min_salary, Max_salary)
+VALUES(203, 'Doctor', 2000, 4200)
 
 Select *
 from Hospital_Jobs
@@ -382,7 +501,21 @@ Select *
 from Hexinger_Departments
 order by Department_id
 
-
+101 Therapy
+102 Neurology
+103 Cardiology
+104 Gastroenterology
+105 Diagnostic Reception
+106 Allergological
+107 Reanimation
+108 Gynecology
+109 Urology
+110 Traumatology
+111 Surgery
+112 Neurosurgical
+113 Cardiac Surgery
+114 Anesthesiology
+115 Pediatrics
 
 
 
@@ -419,6 +552,13 @@ INSERT INTO Hexinger_Employees
 Ad_house, Ad_flat, Department_id, Job_id, Salary)
 VALUES('Catters, Katherine E.', 3495678590230, '9-авг-1974', 4356457657, 54, 'Superno',
 137, 0, 113, 201, 3100)
+
+INSERT INTO Hexinger_Employees
+(Employee_name, Employee_id, Birthdate, Phone_num, District_id, Ad_street,
+Ad_house, Ad_flat, Department_id, Job_id, Salary)
+VALUES('Specter, Olive H.', 5695678590230, '13-окт-1986', 4356457756, 54, 'Superno',
+149, 0, 110, 203, 2300)
+
 
 INSERT INTO Hexinger_Employees
 (Employee_name, Employee_id, Birthdate, Phone_num, District_id, Ad_street,
